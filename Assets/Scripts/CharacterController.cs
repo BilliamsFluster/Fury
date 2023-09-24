@@ -15,7 +15,6 @@ public class CharacterController : Controller
     void Update()
     {
         Vector3 moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-        moveDirection = pawn.transform.InverseTransformDirection(moveDirection);
         
         pawn.Move(moveDirection);
         if(isMouseRotation)

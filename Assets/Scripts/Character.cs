@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Character : Pawn
 {
@@ -19,6 +20,8 @@ public class Character : Pawn
 
     public override void Move(Vector3 direction)
     {
+        direction = transform.InverseTransformDirection(direction);
+
         direction = Vector3.ClampMagnitude(direction, 1);
         direction *= moveSpeed;
 
@@ -36,5 +39,17 @@ public class Character : Pawn
         Vector3 vectorToLookDown = position - transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(vectorToLookDown);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, lookRotation, rotationSpeed * Time.deltaTime);
+    }
+
+    public void OnAnimatorMove()
+    {
+        transform.position += animator.deltaPosition;
+        transform.rotation *= animator.deltaRotation;
+
+        AIController aiController = controller as AIController;
+        if(aiController != null)
+        {
+            transform.position = aiController.agent.nextPosition;
+        }
     }
 }
