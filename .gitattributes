@@ -1,2 +1,62 @@
-# Auto detect text files and perform LF normalization
+# This .gitattributes file is used to ensure that certain file types retain
+# their line endings, are treated as binary, or are treated as text to ensure
+# proper version control with Git.
+# Auto-detect text files and ensure they use LF.
 * text=auto
+# Unity-specific files
+*.cs diff=csharp text
+*.cginc text
+*.shader text
+*.mat merge=unityyamlmerge eol=lf
+*.anim merge=unityyamlmerge eol=lf
+*.unity merge=unityyamlmerge eol=lf
+*.prefab merge=unityyamlmerge eol=lf
+*.physicsMaterial2D merge=unityyamlmerge eol=lf
+*.physicMaterial merge=unityyamlmerge eol=lf
+*.asset merge=unityyamlmerge eol=lf
+*.meta merge=unityyamlmerge eol=lf
+*.controller merge=unityyamlmerge eol=lf
+# Image files
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.tga binary
+*.bmp binary
+*.gif binary
+*.psd binary
+*.ai binary
+*.tif binary
+*.tiff binary
+# Audio files
+*.wav binary
+*.mp3 binary
+*.ogg binary
+# 3D model files
+*.fbx filter=lfs diff=lfs merge=lfs -text
+*.obj binary
+*.3ds binary
+*.blend binary
+# Other binary files
+*.a binary
+*.dll binary
+*.zip binary
+*.tar binary
+*.gz binary
+*.7z binary
+*.rar binary
+*.exe binary
+*.ttf binary
+*.otf binary
+*.pdf binary
+# Ensure these folders and files are kept out (great for .gitignore files)
+/[Bb]uild/ export-ignore
+/[Ll]ibrary/ export-ignore
+/[Tt]emp/ export-ignore
+/[Oo]bj/ export-ignore
+/[Bb]uilds/ export-ignore
+/[Ll]ogs/ export-ignore
+/[Uu]ser[Ss]ettings/ export-ignore
+# Backup & report files from converting an old project file
+# to be forwards compatible with the new GUI system
+UnityGenerated/ export-ignore
+Icon\r export-ignore
