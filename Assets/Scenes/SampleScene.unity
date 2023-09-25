@@ -172,7 +172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_OverrideArea: 0
   m_Area: 0
-  m_IgnoreFromBuild: 1
+  m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
 --- !u!65 &132075286
 BoxCollider:
@@ -433,7 +433,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4bb2b9b8942a5654e9681bc7211d6619, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.27
+      value: 6.57
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4bb2b9b8942a5654e9681bc7211d6619, type: 3}
       propertyPath: m_LocalPosition.z
