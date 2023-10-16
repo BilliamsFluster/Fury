@@ -469,6 +469,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 952837140274645731, guid: d0f206dde57f9fc45ae9933a1f17e667, type: 3}
+      propertyPath: currentHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 3690736839411010478, guid: d0f206dde57f9fc45ae9933a1f17e667, type: 3}
       propertyPath: m_Name
       value: AI (1)
