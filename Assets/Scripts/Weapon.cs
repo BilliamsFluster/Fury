@@ -4,7 +4,9 @@ using UnityEngine.Events;
 public class Weapon : MonoBehaviour
 {
     // UnityEvents for the observer pattern
+    [Tooltip("The event to call other events when invoked.")]
     public UnityEvent onTriggerPull;
+    [Tooltip("The event to call other events when invoked.")]
     public UnityEvent onTriggerRelease;
 
     // Weapon properties
@@ -33,7 +35,7 @@ public class Weapon : MonoBehaviour
         // For automatic firing
         if (isShooting)
         {
-            // Implement automatic firing logic here using fireRate
+            // Implement automatic firing logic using fireRate
         }
     }
 }
