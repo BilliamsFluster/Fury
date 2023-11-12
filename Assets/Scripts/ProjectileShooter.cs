@@ -18,6 +18,13 @@ public class ProjectileShooter : MonoBehaviour
     {
         //spawn projectile 
         GameObject projectile = Instantiate(weapon.projectilePrefab, firePoint.position, firePoint.rotation);
+        Quaternion originalRotation = firePoint.rotation;
+        float accuracyRotation = weapon.GetAccuracyRotation();
+        accuracyRotation = (accuracyRotation / 2) - accuracyRotation;
+        firePoint.transform.Rotate(0, accuracyRotation, 0);
+
+        
+
         //check for rb component
         Rigidbody rb = projectile.GetComponent<Rigidbody>();
         if (rb)
@@ -25,5 +32,7 @@ public class ProjectileShooter : MonoBehaviour
             // add velocity to give the bullet extra bang
             rb.velocity = firePoint.forward * weapon.projectileSpeed;
         }
+        // Reset fire point rotation
+        firePoint.rotation = originalRotation;
     }
 }

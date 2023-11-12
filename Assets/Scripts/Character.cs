@@ -8,6 +8,8 @@ public class Character : Pawn
     // Reference to the Animator component, which controls animations
     private Animator animator;
 
+
+    public Weapon weapon;
     // Initialization function called once at the start
     void Start()
     {
@@ -71,6 +73,37 @@ public class Character : Pawn
         {
             // Update the character's position based on the AI's navigation path
             transform.position = aiController.agent.nextPosition;
+        }
+    }
+
+    private void OnAnimatorIK(int layerIndex)
+    {
+        if (weapon != null)
+        {
+            if(weapon.RHPoint != null)
+            {
+                animator.SetIKPosition(AvatarIKGoal.RightHand, weapon.RHPoint.position);
+                animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 1.0f);
+                animator.SetIKRotation(AvatarIKGoal.RightHand, weapon.RHPoint.rotation);
+                animator.SetIKRotationWeight(AvatarIKGoal.RightHand, 1.0f);
+            }
+            if (weapon.LHPoint != null)
+            {
+                animator.SetIKPosition(AvatarIKGoal.LeftHand, weapon.LHPoint.position);
+                animator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 1.0f);
+                animator.SetIKRotation(AvatarIKGoal.LeftHand, weapon.LHPoint.rotation);
+                animator.SetIKRotationWeight(AvatarIKGoal.LeftHand, 1.0f);
+
+            }
+        }
+        else
+        {
+            animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 0.0f);
+            animator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 0.0f);
+            animator.SetIKRotationWeight(AvatarIKGoal.LeftHand, 0.0f);
+            animator.SetIKRotationWeight(AvatarIKGoal.RightHand, 0.0f);
+
+
         }
     }
 }
