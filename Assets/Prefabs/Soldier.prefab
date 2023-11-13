@@ -3007,6 +3007,8 @@ GameObject:
   - component: {fileID: 8878550964009963653}
   - component: {fileID: 8878550964009963672}
   - component: {fileID: 8502846946173446302}
+  - component: {fileID: 6261804334999029203}
+  - component: {fileID: -1834221604956368810}
   m_Layer: 0
   m_Name: Soldier
   m_TagString: Untagged
@@ -3112,6 +3114,54 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isRagdoll: 0
+--- !u!114 &6261804334999029203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8644548290054651256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7feb48ffa56c4de43b197ffa119be5d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 100
+  onTakeDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  onDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -1834221604956368810}
+        m_TargetAssemblyTypeName: DestroyOnDeath, Assembly-CSharp
+        m_MethodName: DestroySelf
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onDeathBackup:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &-1834221604956368810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8644548290054651256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8aa286af38a272049ad661b29c1ab3fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delayDeathTime: 0
 --- !u!1 &8730739649804141167
 GameObject:
   m_ObjectHideFlags: 0

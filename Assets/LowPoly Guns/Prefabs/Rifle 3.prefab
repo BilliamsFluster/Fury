@@ -78,6 +78,7 @@ GameObject:
   - component: {fileID: 8291211331636219416}
   - component: {fileID: 670339065164408974}
   - component: {fileID: 7413921553482867644}
+  - component: {fileID: 5824786266146531466}
   m_Layer: 0
   m_Name: Rifle 3
   m_TagString: Untagged
@@ -187,6 +188,8 @@ MonoBehaviour:
       m_Calls: []
   RHPoint: {fileID: 3443004043104132914}
   LHPoint: {fileID: 2082874117140855156}
+  weaponAccuracy: 92.1
+  maxWeaponAccuracyRotationOffset: 100
   projectilePrefab: {fileID: 6496497558522637449, guid: 625389be21c28714c9299b2cf93ccb52, type: 3}
   projectileSpeed: 10
   fireRate: 10
@@ -233,6 +236,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon: {fileID: 3311438615371680653}
   SoundClip: {fileID: 0}
+--- !u!114 &5824786266146531466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5313856188506331232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4ae2cea65172ef409f208ba6991a94e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delayTime: 0.2
+  afterDelayEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6682431512168394686
 GameObject:
   m_ObjectHideFlags: 0

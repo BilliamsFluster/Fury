@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class ProjectileShooter : MonoBehaviour
 {
@@ -9,8 +10,18 @@ public class ProjectileShooter : MonoBehaviour
 
     private void Awake()
     {
+        // Check if the GameObject has a NavMeshAgent component
+        NavMeshAgent agent = GetComponentInParent<NavMeshAgent>();
+
+        
         // Subscribe to the weapon's trigger pull event
-        weapon.onTriggerPull.AddListener(ShootProjectile);
+        
+        EventSystemDelay obj = gameObject.GetComponent<EventSystemDelay>();
+        // If there is no NavMeshAgent, it's likely a player character
+        if (agent == null)
+        {
+            obj.afterDelayEvent.AddListener(ShootProjectile);
+        }
         
     }
 

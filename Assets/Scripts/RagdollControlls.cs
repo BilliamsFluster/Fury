@@ -10,7 +10,7 @@ public class RagdollControlls : MonoBehaviour
     private Rigidbody[] rigidbodies;
     private Collider[] colliders;
     private Animator animator;
-    public bool isRagdoll;
+    public bool isRagdoll = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,7 +28,9 @@ public class RagdollControlls : MonoBehaviour
     }
     public void EnableRagdoll()
     {
-        foreach(Collider collider in colliders)
+        
+
+        foreach (Collider collider in colliders)
         {
             collider.enabled = true;
         }
@@ -43,6 +45,8 @@ public class RagdollControlls : MonoBehaviour
     }
     public void DisableRagdoll()
     {
+        
+
         foreach (Collider collider in colliders)
         {
             collider.enabled = false;

@@ -10,6 +10,7 @@ public class Health : MonoBehaviour
     // UnityEvents for the observer pattern
     public UnityEvent<float> onTakeDamage; // Passes damage amount
     public UnityEvent onDeath;
+    public UnityEvent onDeathBackup;
 
     private void Awake()
     {
@@ -41,6 +42,7 @@ public class Health : MonoBehaviour
     {
         currentHealth = 0;
         onDeath.Invoke();
+        onDeathBackup.Invoke();
     }
 
     public void Heal(float amount)

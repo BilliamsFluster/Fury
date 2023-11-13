@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Events;
 
 public class Weapon : MonoBehaviour
@@ -36,10 +37,15 @@ public class Weapon : MonoBehaviour
 
     void Update()
     {
+        // Check if the GameObject has a NavMeshAgent component
+        NavMeshAgent agent = GetComponentInParent<NavMeshAgent>();
+
+
         // Trigger mechanism using mouse click
         if (Input.GetMouseButtonDown(0))
         {
-            onTriggerPull.Invoke();
+            if (agent == null)
+                onTriggerPull.Invoke();
             isShooting = true;
         }
         if (Input.GetMouseButtonUp(0))
