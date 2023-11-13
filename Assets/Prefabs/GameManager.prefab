@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &652905662722981450
+--- !u!1 &5128881326819889259
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,43 +8,52 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 652905662722981448}
-  - component: {fileID: 652905662722981451}
+  - component: {fileID: 5128881326819889269}
+  - component: {fileID: 5128881326819889268}
   m_Layer: 0
-  m_Name: AIController
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &652905662722981448
+--- !u!4 &5128881326819889269
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 652905662722981450}
+  m_GameObject: {fileID: 5128881326819889259}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.2287827, y: -19.251581, z: 47.8694}
+  m_LocalPosition: {x: 1.5747501, y: 10.049391, z: -6.7264185}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &652905662722981451
+--- !u!114 &5128881326819889268
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 652905662722981450}
+  m_GameObject: {fileID: 5128881326819889259}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfe880b741cf04d429fa8b22c6a262ed, type: 3}
+  m_Script: {fileID: 11500000, guid: 36295f3ad72d5c047948b3610a0505a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pawn: {fileID: 0}
-  agent: {fileID: 0}
-  stoppingDistance: 2
-  chaseTarget: {fileID: 8988140813617375170, guid: bf6edb86f24f8a6448a0e098eff1eab8, type: 3}
+  currentLevel: 0
+  levels:
+  - currentWave: 0
+    waves:
+    - currentSpawn: 2
+      spawns:
+      - enemyPrefab: {fileID: 3690736839411010478, guid: d0f206dde57f9fc45ae9933a1f17e667, type: 3}
+        numberOfEnemies: 2
+    spawnPoints:
+    - {fileID: 0}
+  enemies: []
+  aiControllerPrefab: {fileID: 652905662722981451, guid: e371ab511d85d824caf9fd6d7157f614, type: 3}
+  player: {fileID: 0}

@@ -14,6 +14,14 @@ public class AIController : Controller
     [Tooltip("The target that the AI will chase/follow.")]
     public Transform chaseTarget;
 
+
+    [Tooltip("The range within which the AI will start shooting at the target.")]
+    public float shootingRange = 10.0f;
+
+    private ProjectileShooter shooter;
+    private float shootDelay = 2.0f; // Delay between shots
+    private float lastShootTime;
+
     /// <summary>
     /// Takes control of a Pawn object.
     /// </summary>
@@ -48,14 +56,29 @@ public class AIController : Controller
         if (pawn != null)
         {
             Possess(pawn);
+            shooter = pawn.GetComponent<ProjectileShooter>();
+
         }
     }
 
     private void Update()
     {
+        if (chaseTarget == null)
+        {
+            Debug.LogError("Chase target not set for AIController.");
+            return;
+        }
+        float distanceToTarget = Vector3.Distance(pawn.transform.position, chaseTarget.position);
         agent.SetDestination(chaseTarget.position);
         Vector3 moveVector = new Vector3(agent.desiredVelocity.x, 0, agent.desiredVelocity.z);
         pawn.Move(moveVector);
         pawn.RotateToLookAt(chaseTarget.position);
+        
+        // Check if within shooting range and if enough time has passed since the last shot
+        if (distanceToTarget <= shootingRange && Time.time > lastShootTime + shootDelay)
+        {
+            shooter?.ShootProjectile();
+            lastShootTime = Time.time;
+        }
     }
 }
