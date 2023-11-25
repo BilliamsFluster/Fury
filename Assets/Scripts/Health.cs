@@ -6,6 +6,7 @@ public class Health : MonoBehaviour
 {
     public float maxHealth = 100f;
     public float currentHealth = 100f;
+    public Healthbar healthBar;
 
     // UnityEvents for the observer pattern
     public UnityEvent<float> onTakeDamage; // Passes damage amount
@@ -25,12 +26,14 @@ public class Health : MonoBehaviour
         {
             bullet.onBulletHit.AddListener(HandleBulletHit);
         }
+        healthBar.SetMaxHealth(maxHealth);
     }
 
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
         onTakeDamage.Invoke(damage);
+        healthBar.SetHealth(currentHealth);
 
         if (currentHealth <= 0)
         {

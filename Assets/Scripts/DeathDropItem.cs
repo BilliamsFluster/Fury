@@ -6,7 +6,7 @@ using UnityEngine;
 public class DeathDropItem : MonoBehaviour
 {
     public DropTable dropTable;
-    public List<float> denistyArray;
+    private List<float> denistyArray;
     private float totalWeight = 0;
 
     // Start is called before the first frame update
