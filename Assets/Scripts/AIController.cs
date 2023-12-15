@@ -6,7 +6,7 @@ public class AIController : Controller
     [Header("AI Components")]
     [Tooltip("The NavMeshAgent component attached to the AI character.")]
     [HideInInspector]public NavMeshAgent agent; // Made private as it should not be exposed in the inspector
-
+    
     [Header("AI Settings")]
     [Tooltip("Distance at which the AI stops moving towards its target.")]
     public float stoppingDistance = 1.0f;
@@ -25,7 +25,7 @@ public class AIController : Controller
     /// <summary>
     /// Takes control of a Pawn object.
     /// </summary>
-    /// <param name="pawnToPossess">The pawn to possess.</param>
+    /// <param name="pawnToPossess">The pawn to possess.</param>w
     public override void Possess(Pawn pawnToPossess)
     {
         agent = pawnToPossess.GetComponent<NavMeshAgent>();
@@ -78,6 +78,7 @@ public class AIController : Controller
         if (distanceToTarget <= shootingRange && Time.time > lastShootTime + shootDelay)
         {
             shooter?.ShootProjectile();
+
             lastShootTime = Time.time;
         }
     }

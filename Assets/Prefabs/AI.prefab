@@ -1664,13 +1664,13 @@ MonoBehaviour:
   onDeath:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5787594395322595056}
-        m_TargetAssemblyTypeName: DestroyOnDeath, Assembly-CSharp
-        m_MethodName: DestroySelf
-        m_Mode: 1
+      - m_Target: {fileID: 5128881326819889268, guid: 3a302402902897d4cb9333f7a6dd0647, type: 3}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: OnEnemyDeath
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 4609795167769710374}
+          m_ObjectArgumentAssemblyTypeName: Pawn, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1683,18 +1683,6 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 5128881326819889268, guid: 3a302402902897d4cb9333f7a6dd0647, type: 3}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: OnEnemyDeath
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 4609795167769710374}
-          m_ObjectArgumentAssemblyTypeName: Pawn, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3590,6 +3578,22 @@ PrefabInstance:
       propertyPath: weaponAccuracy
       value: 18.5
       objectReference: {fileID: 0}
+    - target: {fileID: 3311438615371680653, guid: 7444562fe5798e846a4045a93e123308, type: 3}
+      propertyPath: spawnMuzzleFlash.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3311438615371680653, guid: 7444562fe5798e846a4045a93e123308, type: 3}
+      propertyPath: spawnMuzzleFlash.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3311438615371680653, guid: 7444562fe5798e846a4045a93e123308, type: 3}
+      propertyPath: spawnMuzzleFlash.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5935540867911267291}
+    - target: {fileID: 3311438615371680653, guid: 7444562fe5798e846a4045a93e123308, type: 3}
+      propertyPath: spawnMuzzleFlash.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4824846826913792730, guid: 7444562fe5798e846a4045a93e123308, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -3663,6 +3667,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1234016887834586692, guid: 7444562fe5798e846a4045a93e123308, type: 3}
   m_PrefabInstance: {fileID: 6562522203858606933}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5935540867911267291 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 670339065164408974, guid: 7444562fe5798e846a4045a93e123308, type: 3}
+  m_PrefabInstance: {fileID: 6562522203858606933}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5593acbc8b670be4a92d01ca502d987f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8567628578603569368 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3311438615371680653, guid: 7444562fe5798e846a4045a93e123308, type: 3}

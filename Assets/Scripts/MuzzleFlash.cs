@@ -11,15 +11,19 @@ public class MuzzleFlash : MonoBehaviour
 
     private void Awake()
     {
-        weapon.onTriggerPull.AddListener(ShowMuzzleFlash);
+        weapon.spawnMuzzleFlash.AddListener(ShowMuzzleFlash);
     }
 
     void ShowMuzzleFlash()
     {
         // Instantiate the muzzle flash effect at the weapon's position and rotation
-        GameObject instantiatedMuzzleFlash = Instantiate(muzzleFlashEffect, muzzleFlashSpawn.transform.position, muzzleFlashSpawn.transform.rotation);
+        GameObject instantiatedMuzzleFlash = Instantiate(
+            muzzleFlashEffect,
+            muzzleFlashSpawn.transform.position,
+            Quaternion.Euler(0, -90, 0) * muzzleFlashSpawn.transform.rotation
+        );
 
-        // Destroy the instantiated muzzle flash after a short delay (e.g., 0.5 seconds)
-        Destroy(instantiatedMuzzleFlash, 0.5f);
+        // Destroy the instantiated muzzle flash after a short delay (e.g., 0.1 seconds)
+        Destroy(instantiatedMuzzleFlash, 0.1f);
     }
 }

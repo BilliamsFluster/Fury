@@ -8,23 +8,56 @@ public class GameManager : MonoBehaviour
     public int currentLevel;
     public List<LevelData> levels;
     public List<Pawn> enemies;
-    public AIController aiControllerPrefab; // Reference to the AIController prefab
-
+    public AIController aiControllerPrefab;
     public Character player;
+
+    private float waveTimer;
+    private float timeToNextWave;
+    private bool isWaveInProgress;
 
     void Start()
     {
-        // Initialize the first wave
-        SpawnWave();
+        StartNewWave();
     }
 
     void Update()
     {
-        // Check if all enemies are defeated to spawn the next wave
-        if (enemies.Count == 0 && levels[currentLevel].currentWave < levels[currentLevel].waves.Count)
+        if (isWaveInProgress)
         {
-            SpawnWave();
+            waveTimer += Time.deltaTime;
+            if (waveTimer >= timeToNextWave)
+            {
+                AdvanceToNextWave();
+            }
         }
+    }
+
+    private void StartNewWave()
+    {
+        waveTimer = 0f;
+        timeToNextWave = Random.Range(5f, 10f); // Random duration between 5 to 10 seconds for each wave
+        isWaveInProgress = true;
+        SpawnWave();
+    }
+
+    private void AdvanceToNextWave()
+    {
+        LevelData currentLevelData = levels[currentLevel];
+        currentLevelData.currentWave++;
+
+        if (currentLevelData.currentWave >= currentLevelData.waves.Count)
+        {
+            // Move to the next level or reset if all levels are completed
+            currentLevel++;
+            if (currentLevel >= levels.Count)
+            {
+                Debug.Log("All levels completed. Restarting...");
+                currentLevel = 0;
+            }
+            currentLevelData.currentWave = 0;
+        }
+
+        StartNewWave(); // Start the next wave
     }
 
     public void SpawnWave()
@@ -32,8 +65,7 @@ public class GameManager : MonoBehaviour
         LevelData currentLevelData = levels[currentLevel];
         if (currentLevelData.currentWave >= currentLevelData.waves.Count)
         {
-            // Handle the scenario when all waves are completed
-            return;
+            return; // No more waves to spawn
         }
 
         SpawnWaveData currentWave = currentLevelData.waves[currentLevelData.currentWave];
@@ -41,14 +73,10 @@ public class GameManager : MonoBehaviour
         {
             for (int i = 0; i < spawnData.numberOfEnemies; i++)
             {
-                // Randomly select a spawn point from the level's spawn points
                 Transform spawnPoint = currentLevelData.spawnPoints[Random.Range(0, currentLevelData.spawnPoints.Count)].transform;
                 SpawnEnemy(spawnData.enemyPrefab, spawnPoint);
             }
         }
-
-        // Move to the next wave
-        currentLevelData.currentWave++;
     }
 
     public void SpawnEnemy(GameObject enemyToSpawn, Transform spawnPoint)
@@ -60,10 +88,7 @@ public class GameManager : MonoBehaviour
         if (enemyPawn != null && enemyHealth != null)
         {
             enemies.Add(enemyPawn);
-            enemyHealth.onDeathBackup.AddListener(() => OnEnemyDeath(enemyPawn));
-            
-
-            // Instantiate and configure AIController
+            enemyHealth.onDeath.AddListener(() => OnEnemyDeath(enemyPawn));
             if (aiControllerPrefab != null)
             {
                 AIController aiController = Instantiate(aiControllerPrefab, newEnemy.transform.position, Quaternion.identity, newEnemy.transform);
@@ -81,9 +106,16 @@ public class GameManager : MonoBehaviour
 
     public void OnEnemyDeath(Pawn enemy)
     {
-        enemy.GetComponent<RagdollControlls>().EnableRagdoll();
         enemies.Remove(enemy);
-        
+        RagdollControlls ragdoll = enemy.GetComponent<RagdollControlls>();
+        if (ragdoll != null)
+        {
+            ragdoll.EnableRagdoll();
+        }
+
+        Destroy(enemy.gameObject);
+
+        enemies.RemoveAll(e => e == null); // Clean up any null references in the list
+        Debug.Log("Enemy removed. Remaining enemies: " + enemies.Count);
     }
-    
 }

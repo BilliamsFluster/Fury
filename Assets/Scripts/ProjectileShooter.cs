@@ -33,8 +33,9 @@ public class ProjectileShooter : MonoBehaviour
         float accuracyRotation = weapon.GetAccuracyRotation();
         accuracyRotation = (accuracyRotation / 2) - accuracyRotation;
         firePoint.transform.Rotate(0, accuracyRotation, 0);
+        weapon.spawnMuzzleFlash.Invoke();
 
-        
+
 
         //check for rb component
         Rigidbody rb = projectile.GetComponent<Rigidbody>();

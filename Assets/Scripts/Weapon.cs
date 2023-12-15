@@ -9,6 +9,7 @@ public class Weapon : MonoBehaviour
     // UnityEvents for the observer pattern
     [Tooltip("The event to call other events when invoked.")]
     public UnityEvent onTriggerPull;
+    public UnityEvent spawnMuzzleFlash;
     [Tooltip("The event to call other events when invoked.")]
     public UnityEvent onTriggerRelease;
 
@@ -46,6 +47,7 @@ public class Weapon : MonoBehaviour
         {
             if (agent == null)
                 onTriggerPull.Invoke();
+                
             isShooting = true;
         }
         if (Input.GetMouseButtonUp(0))
