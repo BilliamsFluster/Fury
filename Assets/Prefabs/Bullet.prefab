@@ -188,3 +188,4 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  hitPrefab: {fileID: 100004, guid: 510e0a736e5e66243b242a076c59611a, type: 3}

@@ -35,6 +35,8 @@ public class Health : MonoBehaviour
         onTakeDamage.Invoke(damage);
         healthBar.SetHealth(currentHealth);
 
+
+
         if (currentHealth <= 0)
         {
             Die();
